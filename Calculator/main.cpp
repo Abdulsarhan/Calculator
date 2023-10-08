@@ -73,9 +73,6 @@ double calculator(double x, double y, double &result, char operation)
         case '%':
             Remainder(x,y, result);
             break;
-        default: 
-            std::cout <<"invalid operation!";
-            break;
     }
     return result;
 }
@@ -87,34 +84,37 @@ int main()
     double result;
     char operation;
     char yesorno;
-    std::cout <<"Choose your first operand: ";
+    std::cout <<"Enter your first operand: ";
     std::cin >> x;
-    std::cout <<"Choose your operation:\n";
+    std::cout <<"Enter your operation:\n";
     std::cout <<"+ = Add \n- = Subtract \n* = Multiply \n/ = Divide\n% = Remainder\n";
     std::cin >> operation;
-    std::cout <<"Choose your second operand: ";
-    std::cin >> y;
-    calculator  (x, y, result, operation);
-    if (result == 0)
+    if (operation == '+' | operation == '-' | operation =='*'| operation =='/')
     {
+        std::cout <<"Choose your second operand: ";
+        std::cin >> y;
+        calculator  (x, y, result, operation);
+        print_result(x, y, result, operation);
+        std::cout << "Wanna do another calculation? (y/n)";
+        while (yesorno != y && yesorno != 'n')
+        {
+            std::cin >> yesorno;
+            if(yesorno == 'y')
+            {
+                yesorno -= yesorno; 
+                main();
+            }else if (yesorno == 'n')
+            {
+                yesorno -= yesorno;
+                return 0;
+            }else
+                yesorno -= yesorno;
+                std::cout << "\nWanna do another calculation? (y/n)";
+        }
+        return 0;
+    }   else
+
+        std::cout << "invalid operation!\nRestarting...\n";
+        operation -= operation;
         main();
-    }
-    print_result(x, y, result, operation);
-    std::cout << "Wanna do another calculation? (y/n)";
-    while (yesorno != y && yesorno != 'n')
-    {
-        std::cin >> yesorno;
-        if(yesorno == 'y')
-        {
-            yesorno = yesorno - yesorno; 
-            main();
-        }else if (yesorno == 'n')
-        {
-            yesorno = yesorno - yesorno;
-            return 0;
-        }else
-            yesorno = yesorno - yesorno;
-            std::cout << "\nWanna do another calculation? (y/n)";
-    }
-    return 0;
 }
