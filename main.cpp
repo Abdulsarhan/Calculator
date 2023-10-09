@@ -113,7 +113,6 @@ int main()
         }
         return 0;
     }   else
-
         std::cout << "invalid operation!\nRestarting...\n";
         operation -= operation;
         main();
