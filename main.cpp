@@ -39,9 +39,9 @@ void print_result(double x, double y, double &result, char operation)
 
     if (operation == '/' && x == 0 | y == 0 )
     {
-        std::cout << x << operation << y << "=" << undefined << "\n";
+        std::cout << "\n" << x << " " << operation << " " << y << " " << "= " << undefined << "\n";
     }else
-        std::cout << x << operation << y << "=" << result << "\n";
+        std::cout << "\n" << x << " " << operation << " " << y << " " << "= " << result << "\n";
     
     /*if (Remainder(result, 2) == 0)
     {
@@ -95,7 +95,7 @@ int main()
         std::cin >> y;
         calculator  (x, y, result, operation);
         print_result(x, y, result, operation);
-        std::cout << "Wanna do another calculation? (y/n)";
+        std::cout << "\nWanna do another calculation?\ny = yes \nn = no \n";
         while (yesorno != y && yesorno != 'n')
         {
             std::cin >> yesorno;
@@ -109,7 +109,7 @@ int main()
                 return 0;
             }else
                 yesorno -= yesorno;
-                std::cout << "\nWanna do another calculation? (y/n)";
+                std::cout << "\nWanna do another calculation?\ny = yes \nn = no \n";
         }
         return 0;
     }   else
