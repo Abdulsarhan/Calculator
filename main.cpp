@@ -111,11 +111,10 @@ int main()
                 yesorno -= yesorno;
                 std::cout << "\nWanna do another calculation? (y/n)";
         }
-        
+        return 0;
     }   else
 
         std::cout << "invalid operation!\nRestarting...\n";
         operation -= operation;
         main();
-    return 0;
 }
