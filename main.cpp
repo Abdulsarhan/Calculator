@@ -109,29 +109,33 @@ int main()
     get_x(x);
     get_operation(operation);
     get_y(y);
+
     if (operation != '+' && operation != '-' && operation !='*' && operation !='/' && operation != '%')
     {
-        std::cout << "invalid operation!\nRestarting...\n";
+        std::cout << "Invalid operation!\nRestarting...\n";
         operation -= operation;
         main();
-    }   else
-        calculator  (x, y, result, operation);
-        print_result(x, y, result, operation);
+    } 
+
+    calculator  (x, y, result, operation);
+    print_result(x, y, result, operation);
+    
+    do 
+       {
         std::cout << "\nDo you want to do another calculation?\ny = yes \nn = no \n";
-        while (yesorno != y && yesorno != 'n')
+        std::cin >> yesorno;
+        if(yesorno == 'y')
         {
-            std::cin >> yesorno;
-            if(yesorno == 'y')
-            {
-                yesorno -= yesorno; 
-                main();
-            }else if (yesorno == 'n')
-            {
-                yesorno -= yesorno;
-                break;
-            }else
-                yesorno -= yesorno;
-                std::cout << "\nWanna do another calculation?\ny = yes \nn = no \n";
+            yesorno -= yesorno; 
+            main();
+        }else if (yesorno == 'n')
+        {
+            yesorno -= yesorno;
+            break;
+        }else
+            yesorno -= yesorno;
         }
-        return 0;
+    while (yesorno != y && yesorno != 'n');
+    
+    return 0;
 }
