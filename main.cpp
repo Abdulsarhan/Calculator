@@ -35,7 +35,7 @@ double Remainder(double x, double y, double &result)
 }
 void print_result(double x, double y, double &result, char operation)
 {
-    const char undefined[]= "undefined";
+    const char undefined[] = "undefined";
 
     if (operation == '/' && x == 0 | y == 0 )
     {
@@ -77,6 +77,28 @@ double calculator(double x, double y, double &result, char operation)
     return result;
 }
 
+double get_x(double &x)
+{
+    std::cout <<"Enter your first number: ";
+    std::cin >> x;
+    return x;
+}
+
+double get_y(double &y)
+{
+    std::cout <<"Enter your second number: ";
+    std::cin >> y;
+    return y;
+}
+
+char get_operation(char &operation)
+{
+    std::cout <<"Choose your operation:\n";
+    std::cout <<"+ = Add \n- = Subtract \n* = Multiply \n/ = Divide\n% = Remainder\n";
+    std::cin >> operation;
+    return operation;
+}
+
 int main()
 {
     double x;
@@ -84,18 +106,18 @@ int main()
     double result;
     char operation;
     char yesorno;
-    std::cout <<"Enter your first operand: ";
-    std::cin >> x;
-    std::cout <<"Enter your operation:\n";
-    std::cout <<"+ = Add \n- = Subtract \n* = Multiply \n/ = Divide\n% = Remainder\n";
-    std::cin >> operation;
-    if (operation == '+' | operation == '-' | operation =='*'| operation =='/')
+    get_x(x);
+    get_operation(operation);
+    get_y(y);
+    if (operation != '+' && operation != '-' && operation !='*' && operation !='/' && operation != '%')
     {
-        std::cout <<"Choose your second operand: ";
-        std::cin >> y;
+        std::cout << "invalid operation!\nRestarting...\n";
+        operation -= operation;
+        main();
+    }   else
         calculator  (x, y, result, operation);
         print_result(x, y, result, operation);
-        std::cout << "\nWanna do another calculation?\ny = yes \nn = no \n";
+        std::cout << "\nDo you want to do another calculation?\ny = yes \nn = no \n";
         while (yesorno != y && yesorno != 'n')
         {
             std::cin >> yesorno;
@@ -106,14 +128,10 @@ int main()
             }else if (yesorno == 'n')
             {
                 yesorno -= yesorno;
-                return 0;
+                break;
             }else
                 yesorno -= yesorno;
                 std::cout << "\nWanna do another calculation?\ny = yes \nn = no \n";
         }
         return 0;
-    }   else
-        std::cout << "invalid operation!\nRestarting...\n";
-        operation -= operation;
-        main();
 }
