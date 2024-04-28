@@ -1,1 +1,1 @@
-A simple calculator that performs operations on two numbers.
+A simple interactive calculator that performs operations on two numbers.
